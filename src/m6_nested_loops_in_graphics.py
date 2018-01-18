@@ -109,8 +109,6 @@ def draw_L(window, circle, r, c):
         centery = centery + 2 * radius
 
 
-
-
 def run_test_draw_wall_on_right():
     """ Tests the    draw_wall_on_right    function. """
     # Tests 1 and 2 are ALREADY DONE (here).
@@ -147,9 +145,31 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    width = rectangle.get_width()
+    height = rectangle.get_height()
+    corner2 = rectangle.corner_2
+    corner1 = rectangle.corner_1
+
+    for k in range(n):
+
+        for j in range(k):
+            p1 = rg.Point(corner1.x, corner1.y)
+            p2 = rg.Point(corner2.x, corner2.y)
+            rectangle1 = rg.Rectangle(p1, p2)
+            rectangle1.attach_to(window)
+            corner1.x = corner1.x - width
+            corner2.x = corner2.x - width
+            window.render()
+        corner1.y = rectangle.corner_1.y + height
+        corner2.y = rectangle.corner_2.y + height
+        corner1.x = corner1.x + k * width
+        corner2.x = corner2.x + k * width
+
+
+
 
 
 # ----------------------------------------------------------------------
